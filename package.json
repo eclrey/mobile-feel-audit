@@ -1,0 +1,16 @@
+{
+  "name": "mobile-feel-audit",
+  "version": "0.1.0",
+  "description": "Find the tells that make a web app feel like a website on a phone — sticky hover, tap flash, 100vh, input zoom, tiny targets, status-bar color. Zero dependencies; uses the Chrome you already have.",
+  "type": "module",
+  "bin": { "mobile-feel-audit": "bin/mobile-feel-audit.mjs" },
+  "exports": { ".": "./src/run.mjs" },
+  "files": ["bin/", "src/", "dist/", "SKILL.md", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "node --test test/audit.test.mjs",
+    "build": "node scripts/build-bookmarklet.mjs"
+  },
+  "engines": { "node": ">=22" },
+  "keywords": ["mobile", "audit", "lint", "pwa", "touch", "hover", "viewport", "accessibility", "agent-skill"],
+  "license": "MIT"
+}

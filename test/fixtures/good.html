@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111111">
+<meta name="color-scheme" content="light dark">
+<title>good fixture</title>
+<style>
+  html { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-color-scheme: dark) { body { background: #111; color: #eee; } }
+  body { margin: 0; font: 16px/1.5 system-ui, sans-serif; }
+  .shell { min-height: 100dvh; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  button, a, [role="button"] { touch-action: manipulation; user-select: none; }
+  button { min-height: 44px; padding: 0 16px; }
+  .btn:active { transform: scale(0.97); }
+  @media (hover: hover) and (pointer: fine) { .btn:hover { background: #eee; } }
+  input { font-size: 16px; }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <button class="btn">Pay</button>
+    <p>Read the <a href="#terms">terms of service</a> before you pay for this order.</p>
+    <form>
+      <input name="email" type="email" autocomplete="email">
+      <input name="phone" type="tel" autocomplete="tel">
+    </form>
+  </div>
+</body>
+</html>

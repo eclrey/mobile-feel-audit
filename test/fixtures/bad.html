@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>bad fixture</title>
+<style>
+  @media (prefers-color-scheme: dark) { body { background: #111; color: #eee; } }
+  body { margin: 0; font: 14px/1.4 system-ui, sans-serif; user-select: none; }
+  .shell { height: 100vh; }
+  .btn:hover { background: #eee; }
+  a:hover { text-decoration: underline; }
+  .icon { display: inline-block; width: 16px; height: 16px; }
+  input { font-size: 14px; }
+  .wide { width: 600px; }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <button class="btn">Pay</button>
+    <a href="#x" class="icon" aria-label="close"></a>
+    <form>
+      <input name="email" type="text">
+      <input name="phone">
+    </form>
+    <div class="wide">wide</div>
+  </div>
+</body>
+</html>
