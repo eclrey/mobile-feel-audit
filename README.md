@@ -20,7 +20,7 @@ Lighthouse tells you about speed and the viewport tag. It does not tell you that
 | `sticky-hover` | warn | `:hover` rules outside `@media (hover: hover)` stick after a tap |
 | `tap-highlight` | warn | The browser paints a translucent box over every tapped element |
 | `viewport-height` | warn | `100vh` includes the hidden browser bar, so bottom UI starts under it |
-| `tap-target-size` | warn | Targets under 24×24 px (WCAG 2.5.8; inline text links excepted) |
+| `tap-target-size` | warn | Targets under 24×24 px (WCAG 2.5.8; inline text links, labels and off-screen skip links excepted) |
 | `theme-color` | warn | No `theme-color`: the status bar does not match the page |
 | `safe-area` | warn | `viewport-fit=cover` without `env(safe-area-inset-*)` puts content under the notch |
 | `theme-color-dark` | info | Dark mode exists but there is only one `theme-color` |
@@ -41,7 +41,7 @@ npx github:eclrey/mobile-feel-audit https://example.com https://example.com/chec
 
 Options: `--width`, `--height`, `--dark` (emulate dark mode), `--fail-on error|warn|info|none` (default `error`), `--chrome <path>` (or `CHROME_PATH`). Needs Node 22+.
 
-Or clone and run `node bin/mobile-feel-audit.mjs <url>`.
+It also takes a local file: `npx github:eclrey/mobile-feel-audit ./checkout.html`. Or clone and run `node bin/mobile-feel-audit.mjs <url>`.
 
 **Bookmarklet:** run `npm run build`, then make a bookmark whose URL is the content of `dist/bookmarklet.txt`. Open a page on your phone (or desktop device mode) and tap it. A small panel lists what it found. Cross-origin stylesheets cannot be read from inside a page, so the bookmarklet skips them; the CLI fetches and checks them.
 

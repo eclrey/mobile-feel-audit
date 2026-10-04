@@ -1,6 +1,6 @@
 {
   "name": "mobile-feel-audit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Find the tells that make a web app feel like a website on a phone — sticky hover, tap flash, 100vh, input zoom, tiny targets, status-bar color. Zero dependencies; uses the Chrome you already have.",
   "type": "module",
   "bin": { "mobile-feel-audit": "bin/mobile-feel-audit.mjs" },

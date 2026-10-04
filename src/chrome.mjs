@@ -24,12 +24,12 @@ export function findChrome(explicit) {
   return list.find((p) => existsSync(p)) || null;
 }
 
-export async function launch({ chromePath, timeoutMs = 15000 } = {}) {
+export async function launch({ chromePath, timeoutMs = 15000, args = [] } = {}) {
   const bin = findChrome(chromePath);
   if (!bin) throw new Error('No Chrome/Chromium/Edge found. Set CHROME_PATH or pass --chrome <path>.');
   const dir = mkdtempSync(join(tmpdir(), 'mfa-'));
   const proc = spawn(bin, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${dir}`,
-    '--no-first-run', '--no-default-browser-check', 'about:blank'], { stdio: 'ignore' });
+    '--no-first-run', '--no-default-browser-check', ...args, 'about:blank'], { stdio: 'ignore' });
   const portFile = join(dir, 'DevToolsActivePort');
   const start = Date.now();
   while (!existsSync(portFile)) {

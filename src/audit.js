@@ -103,6 +103,7 @@ function mobileFeelAudit(extraCss) {
 
   // ---- tap target size (WCAG 2.5.8 minimum 24x24, inline text links excepted) ----
   const tiny = taps.filter(el => {
+    if (el.tagName === 'LABEL') return false; // its input is the equivalent target (WCAG 2.5.8 exception)
     const r = el.getBoundingClientRect(); if (r.width >= 24 && r.height >= 24) return false;
     const s = getComputedStyle(el);
     if (el.tagName === 'A' && s.display === 'inline' && el.parentElement &&
@@ -156,7 +157,7 @@ function mobileFeelAudit(extraCss) {
 
   const summary = { error: 0, warn: 0, info: 0 };
   for (const c of checks) if (c.status === 'fail') summary[c.severity]++;
-  return { tool: 'mobile-feel-audit', version: '0.1.0', url: location.href,
+  return { tool: 'mobile-feel-audit', version: '0.1.1', url: location.href,
     viewport: { width: innerWidth, height: innerHeight }, unreadableStylesheets: Math.max(0, unreadable),
     summary, checks };
 }

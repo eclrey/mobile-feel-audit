@@ -1,9 +1,12 @@
 #!/usr/bin/env node
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { audit } from '../src/run.mjs';
 
 const HELP = `mobile-feel-audit — find the tells that make a web app feel like a website on a phone.
 
-Usage: mobile-feel-audit <url> [url ...] [options]
+Usage: mobile-feel-audit <url | file.html> [more ...] [options]
 
 Options
   --json             print JSON (one array of results)
@@ -29,7 +32,9 @@ for (let i = 0; i < args.length; i++) {
   else if (a === '--fail-on') opt.failOn = args[++i];
   else if (a === '--chrome') opt.chrome = args[++i];
   else if (a.startsWith('-')) { console.error(`Unknown option ${a}\n\n${HELP}`); process.exit(2); }
-  else urls.push(/^[a-z]+:\/\//i.test(a) ? a : `https://${a}`);
+  else if (/^[a-z]+:\/\//i.test(a)) urls.push(a);
+  else if (existsSync(a)) urls.push(pathToFileURL(resolve(a)).href); // a local .html file
+  else urls.push(`https://${a}`);
 }
 const LEVELS = ['error', 'warn', 'info'];
 if (![...LEVELS, 'none'].includes(opt.failOn)) { console.error('--fail-on must be error, warn, info or none'); process.exit(2); }
